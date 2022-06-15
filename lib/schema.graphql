@@ -1,0 +1,29 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Country {
+  code: ID!
+  name: String!
+  native: String!
+  phone: String!
+  continent: Continent!
+  capital: String
+  currency: String
+  languages: [Language!]!
+  emoji: String!
+  emojiU: String!
+  states: [State!]!
+}
+
+type State {
+  code: String
+  name: String!
+  country: Country!
+}
+
+type Query {
+  countries(filter: CountryFilterInput): [Country!]!
+  country(code: ID!): Country
+}
