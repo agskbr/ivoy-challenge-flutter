@@ -1,7 +1,15 @@
 query getAllCountries {
-    countries {
-        name
-        capital
-        emoji
+  countries {
+    name
+    capital
+    emoji
+    continent {
+      name
+      code
     }
+    languages {
+      name
+      code
+    }
+  }
 }
