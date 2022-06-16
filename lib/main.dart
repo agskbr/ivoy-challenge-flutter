@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:ivoy_challenge/providers/countries_provider.dart';
+import 'package:ivoy_challenge/ui/screens/home_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppState());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Ivoy challenge app',
-      home: HomePage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => CountriesProvider(),
+        ),
+      ],
+      child: const MyApp(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Ivoy challenge"),
-      ),
-      body: const Center(
-        child: Text('Hello world'),
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Ivoy challenge app',
+      home: HomeScreen(),
     );
   }
 }
