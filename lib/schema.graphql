@@ -1,6 +1,6 @@
 schema {
-    query: Query
-    mutation: Mutation
+  query: Query
+  mutation: Mutation
 }
 
 type Country {
@@ -17,6 +17,18 @@ type Country {
   states: [State!]!
 }
 
+type Continent {
+  code: ID!
+  name: String!
+  countries: [Country!]!
+}
+type Language {
+  code: ID!
+  name: String
+  native: String
+  rtl: Boolean!
+}
+
 type State {
   code: String
   name: String!
@@ -26,4 +38,8 @@ type State {
 type Query {
   countries(filter: CountryFilterInput): [Country!]!
   country(code: ID!): Country
+  continents(filter: ContinentFilterInput): [Continent!]!
+  continent(code: ID!): Continent
+  languages(filter: LanguageFilterInput): [Language!]!
+  language(code: ID!): Language
 }
